@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +79,30 @@ Route::get('post/{slug}', function ($slug) {
         "post" => $new_post
     ]);
 });
+
+Route::post("user", [UserAuth::class, 'userLogin']);
+
+Route::get('/login', function () {
+    return view('login', [
+        "title" => "Login"
+    ]);
+});
+
+Route::view('profile', 'profile');
+
+Route::get('/login', function () {
+    if (session()->has('user')) {
+        return redirect('profile');
+    }
+    return view('login', [
+        "title" => "Login"
+    ]);
+});
+
+Route::get('/logout', function () {
+    if (session()->has('user')) {
+        session()->pull('user');
+    }
+    return redirect('login');
+});
+Route:
