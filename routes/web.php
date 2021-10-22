@@ -88,11 +88,13 @@ Route::get('/login', function () {
     ]);
 });
 
-Route::view('profile', 'profile');
+Route::view('home', 'home', [
+    "title" => "Home"
+]);
 
 Route::get('/login', function () {
     if (session()->has('user')) {
-        return redirect('profile');
+        return redirect('home');
     }
     return view('login', [
         "title" => "Login"
@@ -105,4 +107,3 @@ Route::get('/logout', function () {
     }
     return redirect('login');
 });
-Route:

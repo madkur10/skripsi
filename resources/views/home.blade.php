@@ -1,5 +1,5 @@
-@extends('layouts.main')
+@extends('layouts.mains')
 
 @section('container')
-<h1>Halaman Home</h1>
+<h2>Hi, {{ session('user') }}</h2>
 @endsection
