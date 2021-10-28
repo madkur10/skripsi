@@ -182,7 +182,11 @@ a {
 }
 
 .logo_ihc {
-    width: 200px;
+    width: 170px;
+}
+
+.img_top {
+    height: 75px;
 }
 
 body {

@@ -1,17 +1,39 @@
-<div class="d-flex flex-column vh-100 flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;">
-    <a href="/">
-        <img src="img/logo_ihc.png" alt="" class="logo_ihc">
+<main>
+  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none border-bottom justify-content-center bg-primary text-white">
+      <div class="p-2" style="max-width: 18rem;">
+        <span class="fs-5 fw-semibold text-center"><h3>TELEMEDICINE</h3></span>
+      </div>
     </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item"> <a href="#" class="nav-link active" aria-current="page"> <i class="fa fa-home"></i><span class="ms-2">Home</span> </a> </li>
-        <li> <a href="#" class="nav-link text-white"> <i class="fa fa-dashboard"></i><span class="ms-2">Dashboard</span> </a> </li>
-        <li> <a href="#" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">My Orders</span> </a> </li>
-        <li> <a href="#" class="nav-link text-white"> <i class="fa fa-cog"></i><span class="ms-2">Settings</span> </a> </li>
-        <li> <a href="#" class="nav-link text-white"> <i class="fa fa-bookmark"></i><span class="ms-2">Bookmarks</span> </a> </li>
+    <ul class="list-unstyled ps-0">
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="{{ ($menu_aktif == 'administrator') ? 'true' : 'false' }}">
+          Administrator
+        </button>
+        <div class="collapse {{ ($menu_aktif == 'administrator') ? 'show' : '' }}" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'bagian') ? 'active' : '' }}">Bagian</a></li>
+            <li><a href="{{ route('list.users') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'pengguna') ? 'active' : '' }}">Pengguna</a></li>
+            <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'profesi') ? 'active' : '' }}">Profesi</a></li>
+            <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'jadwal_dokter') ? 'active' : '' }}">Jadwal Dokter</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="{{ ($menu_aktif == 'account') ? 'true' : 'false' }}">
+          Account
+        </button>
+        <div class="collapse {{ ($menu_aktif == 'account') ? 'show' : '' }}" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark rounded {{ ($menu_aktif == 'administrator') ? 'true' : 'false' }}">New...</a></li>
+            <li><a href="#" class="link-dark rounded {{ ($menu_aktif == 'administrator') ? 'true' : 'false' }}">Profile</a></li>
+            <li><a href="#" class="link-dark rounded {{ ($menu_aktif == 'administrator') ? 'true' : 'false' }}">Settings</a></li>
+            <li><a href="#" class="link-dark rounded {{ ($menu_aktif == 'administrator') ? 'true' : 'false' }}">Sign out</a></li>
+          </ul>
+        </div>
+      </li>
     </ul>
-    <hr>
-    <div>
-        <a href="/logout" class="nav-link text-white">Logout</a>
-    </div>
-</div>
+  </div>
+</main>

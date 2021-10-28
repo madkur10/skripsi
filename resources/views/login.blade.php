@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.plain')
 
 @section('container')
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -46,14 +46,28 @@
                         <div class="line"></div>
                         <div class="line"></div>
                     </div>
-                    <form action="user" method="POST">
+
+                    @if (session('invalid'))
+                    <div class="alert alert-danger">
+                        {{ session('invalid') }}
+                    </div>
+                    @endif
+                    <form action="{{ route('login.action') }}" method="POST">
                         @csrf
+                        <div class="row px-3 mb-4"> <label class="mb-1">
+                            <h6 class="mb-0 text-sm">User Name</h6>
+                            </label> <input type="text" name="username" placeholder="Enter a valid user name"> 
+                            @error('username')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="row px-3"> <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Email Address</h6>
-                            </label> <input class="mb-4" type="text" name="user" placeholder="Enter a valid email address"> </div>
-                        <div class="row px-3"> <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Password</h6>
-                            </label> <input type="password" name="password" placeholder="Enter password"> </div>
+                            <h6 class="mb-0 text-sm">Password</h6>
+                            </label> <input type="password" name="password" placeholder="Enter password"> 
+                            @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="row mb-4 mt-4">
                             <a href="#" class="mb-0 text-sm">Forgot Password?</a>
                         </div>
