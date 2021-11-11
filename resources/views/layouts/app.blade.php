@@ -7,34 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebars.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard/dashboard.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <title>{{ $title }} - Telemedicine</title>
+    <title>{{ $title ?? '' }} - Telemedicine</title>
 </head>
 
 <body>
-    <div class="d-flex flex-row">
-        <div class="p2">
-            @include('partials.navbarside')
+    <div class="d-flex flex-column mb-3">
+        <div>
+            @include('partials.navbartop')
         </div>
-        <div class="p2 flex-fill">
-            <div class="container-fluid">
-                @include('partials.navbartop')
-                <div class="content-page">
-                    <div class="content">
-                        <br>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                @yield('container')
-                            </div>
+        <div class="container-fluid">
+            <div class="row">
+                @include('partials.navbarside')
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <div class="pt-3 pb-2 mb-3 border-bottom w-100">
+                        <div class="card">
+                            @yield('container')
                         </div>
                     </div>
-                </div>
+                </main>
             </div>
         </div>
     </div>
+    
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/sidebars.js') }}"></script>
+    <script src="{{ asset('css/dashboard/dashboard.js') }}"></script>
 </body>
 
 </html>

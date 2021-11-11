@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <img src="{{ asset('img/header.png') }}" alt="" class="img_top">
-    </div>
-</nav>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a href="{{ route('homepage') }}" class="logo-utama col-md-3 col-lg-2 me-0 px-3"><b>TELEMED<span>ICINE</span></b></a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+</header>

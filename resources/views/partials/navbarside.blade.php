@@ -1,11 +1,6 @@
-<main>
-  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none border-bottom justify-content-center bg-primary text-white">
-      <div class="p-2" style="max-width: 18rem;">
-        <span class="fs-5 fw-semibold text-center"><h3>TELEMEDICINE</h3></span>
-      </div>
-    </a>
-    <ul class="list-unstyled ps-0">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
       <li class="border-top my-3"></li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="{{ ($menu_aktif == 'administrator') ? 'true' : 'false' }}">
@@ -14,7 +9,7 @@
         <div class="collapse {{ ($menu_aktif == 'administrator') ? 'show' : '' }}" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'bagian') ? 'active' : '' }}">Bagian</a></li>
-            <li><a href="{{ route('list.users') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'pengguna') ? 'active' : '' }}">Pengguna</a></li>
+            <li><a href="{{ route('users.list') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'pengguna') ? 'active' : '' }}">Pengguna</a></li>
             <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'profesi') ? 'active' : '' }}">Profesi</a></li>
             <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'jadwal_dokter') ? 'active' : '' }}">Jadwal Dokter</a></li>
           </ul>
@@ -36,4 +31,5 @@
       </li>
     </ul>
   </div>
-</main>
+</nav>
+  

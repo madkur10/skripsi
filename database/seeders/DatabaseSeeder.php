@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             'created_by' => 1,
-            'created_time' => now(),
+            'created_at' => now(),
             'fullname' => 'Muhammad Kurniawan',
             'username' => 'admin',
             'password' => '123456',

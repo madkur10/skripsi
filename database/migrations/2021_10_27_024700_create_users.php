@@ -17,13 +17,13 @@ class CreateUsers extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('created_by');
-            $table->timestamp('created_time')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at');
             $table->foreignId('updated_by')->nullable();
-            $table->timestamp('updated_time')->nullable();
+            $table->timestamp('updated_at')->nullable();
             $table->foreignId('deleted_by')->nullable();
-            $table->timestamp('deleted_time')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->string('fullname');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->foreignId('profesi_id');
         });
