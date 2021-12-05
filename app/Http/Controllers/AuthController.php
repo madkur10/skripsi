@@ -35,6 +35,14 @@ class AuthController extends Controller
         }
     }
 
+    public function registrasi()
+    {
+        $title          = "Registrasi";
+        return view('registrasi', [
+            'title' => $title
+        ]);
+    }
+
     public function home()
     {
         $title          = "Home";

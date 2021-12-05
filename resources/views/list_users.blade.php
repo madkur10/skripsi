@@ -3,10 +3,10 @@
 @section('container')
 <div class="card-header">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-8 col-sm-8">
       <h4>Daftar Pengguna</h4>
     </div>
-    <div class="col-md-4 text-end">
+    <div class="col-4 col-sm-4 text-end">
       <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         + Tambah Pengguna
       </button>
@@ -18,22 +18,22 @@
     <table class="table table-bordered">
       <thead class="table-dark">
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nama</th>
-          <th scope="col">User</th>
-          <th scope="col">Password</th>
-          <th scope="col">Profesi</th>
-          <th scope="col">Aksi</th>
+          <th class="col text-center">No.</th>
+          <th class="col">Nama</th>
+          <th class="col">User</th>
+          <th class="col">Password</th>
+          <th class="col">Terakhir Password Di Perbaharui</th>
+          <th class="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($list_pengguna as $user) 
         <tr>
-          <td>{{ $loop->iteration }}</td>
+          <td class="text-center">{{ $loop->iteration }}.</td>
           <td>{{ $user->fullname }}</td>
           <td>{{ $user->username }}</td>
           <td>{{ $user->password }}</td>
-          <td>{{ $user->profesi_id }}</td>
+          <td>{{ date('d-m-Y H:i:s', strtotime($user->last_update_pass)) }}</td>
           <td></td>
         </tr>
         @endforeach

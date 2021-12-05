@@ -187,3 +187,7 @@ a.logo-utama:focus {
 a.logo-utama span {
     color: #4ecdc4;
 }
+
+.form-regis {
+    font-weight: bold;
+}

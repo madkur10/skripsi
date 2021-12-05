@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'fullname' => 'Muhammad Kurniawan',
             'username' => 'admin',
             'password' => '123456',
-            'profesi_id' => '1'
+            'last_update_pass' => now()
         ]);
     }
 }
