@@ -12,6 +12,8 @@
             <li><a href="{{ route('clinic.list') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'klinik') ? 'active' : '' }}">Klinik</a></li>
             <li><a href="{{ route('role.list') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'hak_akses') ? 'active' : '' }}">Hak Akses</a></li>
             <li><a href="#" class="link-dark rounded {{ ($sub_menu_aktif == 'jadwal_dokter') ? 'active' : '' }}">Jadwal Dokter</a></li>
+            <li><a href="{{ route('modul.list') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'modul') ? 'active' : '' }}">Modul</a></li>
+            <li><a href="{{ route('menu.list') }}" class="link-dark rounded {{ ($sub_menu_aktif == 'menu') ? 'active' : '' }}">Menu</a></li>
           </ul>
         </div>
       </li>

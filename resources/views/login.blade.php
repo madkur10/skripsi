@@ -52,6 +52,11 @@
                         {{ session('invalid') }}
                     </div>
                     @endif
+                    @if (session('berhasil'))
+                    <div class="alert alert-success">
+                        {{ session('berhasil') }}
+                    </div>
+                    @endif
                     <form action="{{ route('login.action') }}" method="POST">
                         @csrf
                         <div class="row px-3 mb-4"> <label class="mb-1">
@@ -61,18 +66,15 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="row px-3"> <label class="mb-1">
+                        <div class="row px-3 mb-5"> <label class="mb-1">
                             <h6 class="mb-0 text-sm">Password</h6>
                             </label> <input type="password" name="password" placeholder="Enter password"> 
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="row mb-4 mt-4">
-                            <a href="#" class="mb-0 text-sm">Forgot Password?</a>
-                        </div>
                         <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center">Login</button> </div>
-                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a href="{{ route('registrasi') }}" class="text-danger ">Register</a></small> </div>
+                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Tidak mempunyai akun? <a href="{{ route('registrasi') }}" class="text-danger ">Register</a></small> </div>
                     </form>
                 </div>
             </div>

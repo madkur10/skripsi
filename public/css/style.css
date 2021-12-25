@@ -60,7 +60,10 @@ body {
     font-weight: 300;
 }
 
-input,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
 textarea {
     padding: 10px 12px 10px 12px;
     border: 1px solid lightgrey;
@@ -191,3 +194,8 @@ a.logo-utama span {
 .form-regis {
     font-weight: bold;
 }
+
+.form-floating > .bi-calendar-date + .datepicker_input + label {
+    padding-left: 3.5rem;
+    z-index: 3;
+  }

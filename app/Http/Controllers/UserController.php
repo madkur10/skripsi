@@ -30,21 +30,57 @@ class UserController extends Controller
             'nama_lengkap' => 'required|min:4|max:50',
             'user_name' => 'required|min:4|max:20',
             'password' => 'required|min:4',
-            'profesi_id' => 'required',
         ]);
 
         $user_id = Auth::id();
 
         $nama_lengkap   = $validated['nama_lengkap'];
         $username       = $validated['user_name'];
-        $password       = $validated['password'];
-        $profesi_id     = $validated['profesi_id'];
+        $password       = md5($validated['password']);
         $user = User::create([
             'created_by' => $user_id,
             'fullname' => $nama_lengkap,
             'username' => $username,
             'password' => $password,
-            'profesi_id' => $profesi_id,
+            'last_update_pass' => now(),
+        ]);
+
+        return redirect()->route('users.list');
+    }
+
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'nama_lengkap' => 'required|min:4',
+            'username' => 'required|min:4|max:20',
+            'password' => 'required|min:4',
+        ]);
+
+        $user_id = Auth::id();
+
+        $nama_lengkap     = $validated['nama_lengkap'];
+        $username         = $validated['username'];
+        $password         = md5($validated['password']);
+        
+        User::where('id', $request->user_id)->update([
+            'updated_by' => $user_id,
+            'updated_at' => now(),
+            'fullname' => $nama_lengkap,
+            'username' => $username,
+            'password' => $password,
+            'last_update_pass' => now()
+        ]);
+
+        return redirect()->route('users.list');
+    }
+
+    public function delete(Request $request)
+    {
+        $user_id = Auth::id();
+        
+        User::where('id', $request->id)->update([
+            'deleted_by' => $user_id,
+            'deleted_at' => now(),
         ]);
 
         return redirect()->route('users.list');

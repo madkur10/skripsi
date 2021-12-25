@@ -14,13 +14,13 @@ class ClinicController extends Controller
         $title          = "Daftar Klinik";
         $menu_aktif     = "administrator";
         $sub_menu_aktif = "klinik";
-        $users = DB::table('klinik')->where('deleted_by', '=', null)->get();
+        $klinik = DB::table('klinik')->where('deleted_by', '=', null)->get();
 
         return view('list_klinik', [
             'title' => $title,
             'menu_aktif' => $menu_aktif,
             'sub_menu_aktif' => $sub_menu_aktif,
-            'list_pengguna' => $users
+            'list_klinik' => $klinik
         ]);
     }
 
@@ -36,6 +36,37 @@ class ClinicController extends Controller
         $klinik = Klinik::create([
             'created_by' => $user_id,
             'nama_klinik' => $nama_klinik,
+        ]);
+
+        return redirect()->route('clinic.list');
+    }
+
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'nama_klinik' => 'required|min:4',
+        ]);
+
+        $user_id = Auth::id();
+
+        $nama_klinik     = $validated['nama_klinik'];
+        
+        Klinik::where('id', $request->klinik_id)->update([
+            'updated_by' => $user_id,
+            'updated_at' => now(),
+            'nama_klinik' => $nama_klinik,
+        ]);
+
+        return redirect()->route('clinic.list');
+    }
+
+    public function delete(Request $request)
+    {
+        $user_id = Auth::id();
+        
+        Klinik::where('id', $request->id)->update([
+            'deleted_by' => $user_id,
+            'deleted_at' => now(),
         ]);
 
         return redirect()->route('clinic.list');

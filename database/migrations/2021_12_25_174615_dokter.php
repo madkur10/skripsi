@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateUsers extends Migration
+class Dokter extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +13,7 @@ class CreateUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('dokter', function (Blueprint $table) {
             $table->id();
             $table->foreignId('created_by');
             $table->timestamp('created_at');
@@ -22,10 +21,9 @@ class CreateUsers extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->foreignId('deleted_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->string('fullname');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->timestamp('last_update_pass');
+            $table->string('nama_dokter');
+            $table->foreignId('user_id');
+            $table->foreignId('klinik_id');
         });
     }
 
@@ -36,6 +34,6 @@ class CreateUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('dokter');
     }
 }

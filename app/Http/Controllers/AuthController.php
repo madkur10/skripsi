@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Hak_akses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -23,12 +25,15 @@ class AuthController extends Controller
         ]);
 
         $user       = $validated['username'];
-        $password   = $validated['password'];
+        $password   = md5($validated['password']);
         $users      = User::where('username', $user)->where('password', $password)->first();
 
         if (!empty($users)) {
             $user_id = $users->id;
             Auth::loginUsingId($user_id);
+
+            $hak_akses      = Hak_akses::where('user_id', $user_id)->whereNull('deleted_by')->get();
+            
             return redirect()->route('homepage')->with('valid', 'Berhasil Login');
         } else {
             return redirect()->route('login')->with('invalid', 'Username & Password Tidak Sesuai!');
