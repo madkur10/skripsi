@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'fullname' => 'Muhammad Kurniawan',
             'username' => 'admin',
             'password' => md5('123456'),
+            'hak_akses_id' => 1,
             'last_update_pass' => now()
         ]);
 
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
             'fullname' => 'Test Pasien',
             'username' => 'test pasien',
             'password' => md5('123456'),
+            'hak_akses_id' => 4,
             'last_update_pass' => now()
         ]);
 
@@ -53,36 +55,25 @@ class DatabaseSeeder extends Seeder
         DB::table('hak_akses')->insert([
             'created_by' => 1,
             'created_at' => now(),
-            'user_id' => '1',
-            'menu_id' => '1'
+            'nama_hak_akses' => 'admin'
         ]);
 
         DB::table('hak_akses')->insert([
             'created_by' => 1,
             'created_at' => now(),
-            'user_id' => '1',
-            'menu_id' => '2'
+            'nama_hak_akses' => 'registrasi'
         ]);
 
         DB::table('hak_akses')->insert([
             'created_by' => 1,
             'created_at' => now(),
-            'user_id' => '1',
-            'menu_id' => '3'
+            'nama_hak_akses' => 'kasir'
         ]);
 
         DB::table('hak_akses')->insert([
             'created_by' => 1,
             'created_at' => now(),
-            'user_id' => '1',
-            'menu_id' => '4'
-        ]);
-
-        DB::table('hak_akses')->insert([
-            'created_by' => 1,
-            'created_at' => now(),
-            'user_id' => '1',
-            'menu_id' => '5'
+            'nama_hak_akses' => 'pasien'
         ]);
 
         //default modul

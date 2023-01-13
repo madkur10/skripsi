@@ -6,6 +6,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ModulController;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\DokterController;
+use App\Http\Controllers\JadwaldokterController;
 use App\Http\Controllers\RegistrationController;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -25,9 +27,11 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/update', [UserController::class, 'update'])->name('users.update');
         Route::get('/delete', [UserController::class, 'delete'])->name('users.delete');
     });
-    Route::prefix('hakakses')->group(function () {
-        Route::get('/list', [RoleController::class, 'list'])->name('role.list');
-        Route::post('/store', [RoleController::class, 'store'])->name('role.store');
+    Route::prefix('jadwal_dokter')->group(function () {
+        Route::get('/list', [JadwaldokterController::class, 'list'])->name('jadwaldokter.list');
+        Route::post('/store', [JadwaldokterController::class, 'store'])->name('jadwaldokter.store');
+        Route::patch('/update', [JadwaldokterController::class, 'update'])->name('jadwaldokter.update');
+        Route::get('/delete', [JadwaldokterController::class, 'delete'])->name('jadwaldokter.delete');
     });
     Route::prefix('klinik')->group(function () {
         Route::get('/list', [ClinicController::class, 'list'])->name('clinic.list');
@@ -46,5 +50,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [MenuController::class, 'store'])->name('menu.store');
         Route::patch('/update', [MenuController::class, 'update'])->name('menu.update');
         Route::get('/delete', [MenuController::class, 'delete'])->name('menu.delete');
+    });
+    Route::prefix('dokter')->group(function () {
+        Route::get('/list', [DokterController::class, 'list'])->name('dokter.list');
+        Route::post('/store', [DokterController::class, 'store'])->name('dokter.store');
+        Route::patch('/update', [DokterController::class, 'update'])->name('dokter.update');
+        Route::get('/delete', [DokterController::class, 'delete'])->name('dokter.delete');
     });
 });

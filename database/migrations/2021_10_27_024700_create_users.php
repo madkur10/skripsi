@@ -25,6 +25,7 @@ class CreateUsers extends Migration
             $table->string('fullname');
             $table->string('username')->unique();
             $table->string('password');
+            $table->foreignId('hak_akses_id');
             $table->timestamp('last_update_pass');
         });
     }

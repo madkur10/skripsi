@@ -21,8 +21,7 @@ class HakAkses extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->foreignId('deleted_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->foreignId('user_id');
-            $table->foreignId('menu_id');
+            $table->string('nama_hak_akses');
         });
     }
 

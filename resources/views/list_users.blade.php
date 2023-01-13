@@ -21,7 +21,7 @@
           <th class="col text-center">No.</th>
           <th class="col">Nama</th>
           <th class="col">User</th>
-          <th class="col">Password</th>
+          <th class="col">Hak Akses</th>
           <th class="col">Terakhir Password Di Perbaharui</th>
           <th class="col">Aksi</th>
         </tr>
@@ -32,10 +32,10 @@
           <td class="text-center">{{ $loop->iteration }}.</td>
           <td>{{ $user->fullname }}</td>
           <td>{{ $user->username }}</td>
-          <td>{{ $user->password }}</td>
+          <td><span class="badge rounded-pill bg-primary">{{ $user->nama_hak_akses }}</span></td>
           <td>{{ date('d-m-Y H:i:s', strtotime($user->last_update_pass)) }}</td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ubahPengguna{{ $user->id }}">Ubah</button>
+            <span type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ubahPengguna{{ $user->id }}">Ubah</span>
             <div class="modal fade" id="ubahPengguna{{ $user->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -65,7 +65,18 @@
                                   <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password">
                                   <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{ $user->id }}">
                                 </div>
-                            </div>     
+                            </div>  
+                            <div class="mb-3 row">
+                                <label for="menu" class="col-sm-2 col-form-label">Hak Akses</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" name="hak_akses">
+                                        <option selected>--- Pilih Hak Akses ---</option>
+                                        @foreach ($list_hak_akses as $hak_akses)
+                                        <option value="{{ $hak_akses->id }}" @if ($user->hak_akses_id == $hak_akses->id) selected @endif>{{ $hak_akses->nama_hak_akses }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>   
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -111,8 +122,19 @@
           <div class="mb-3 row">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="password" value="{{ old('password') }}" name="password" placeholder="Masukkan Password">
+              <input type="password" class="form-control" id="password" value="{{ old('password') }}" name="password" placeholder="Masukkan Password">
             </div>
+          </div> 
+          <div class="mb-3 row">
+              <label for="hak_akses" class="col-sm-2 col-form-label">Hak Akses</label>
+              <div class="col-sm-10">
+                  <select class="form-select" name="hak_akses">
+                      <option selected>--- Pilih Hak Akses ---</option>
+                      @foreach ($list_hak_akses as $hak_akses)
+                        <option value="{{ $hak_akses->id }}">{{ $hak_akses->nama_hak_akses }}</option>
+                      @endforeach
+                  </select>
+              </div>
           </div> 
         </div>
         <div class="modal-footer">

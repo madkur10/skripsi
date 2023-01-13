@@ -1,4 +1,3 @@
-{{-- {{ dd($hak_akses) }} --}}
 @extends('layouts.app')
 
 @section('container')

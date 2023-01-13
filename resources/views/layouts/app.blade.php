@@ -10,6 +10,7 @@
     <link href="{{ asset('css/dashboard/dashboard.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/jquery-3.6.0.js') }}"></script>
+    <link rel="icon" href="{{ asset('img/logo_ihc.png') }}" type="png">
     <title>{{ $title ?? '' }} - Telemedicine</title>
 </head>
 

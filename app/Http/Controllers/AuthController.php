@@ -25,15 +25,13 @@ class AuthController extends Controller
         ]);
 
         $user       = $validated['username'];
-        $password   = md5($validated['password']);
+        $password   = $validated['password'];
         $users      = User::where('username', $user)->where('password', $password)->first();
 
         if (!empty($users)) {
             $user_id = $users->id;
             Auth::loginUsingId($user_id);
 
-            $hak_akses      = Hak_akses::where('user_id', $user_id)->whereNull('deleted_by')->get();
-            
             return redirect()->route('homepage')->with('valid', 'Berhasil Login');
         } else {
             return redirect()->route('login')->with('invalid', 'Username & Password Tidak Sesuai!');
